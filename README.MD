@@ -162,3 +162,79 @@ Refactoring Effort: Fixing a violation of a SOLID principle can be a significant
     ├── package.json
     └── tsconfig.json
 ```
+
+# SOLID Principles in C# and TypeScript
+This repository serves as a practical demonstration of the SOLID principles of object-oriented design and programming. It showcases how to identify common design flaws and refactor them to create cleaner, more maintainable, and scalable code. The examples are provided in both C# and TypeScript for a side-by-side comparison, making it easy to see how these universal principles apply across different languages.
+
+## Project Structure
+The project is organized by principle, with each principle's folder containing a Before and an After directory.
+
+csharp/: Contains the C# project for each principle.
+
+js-ts/: Contains the TypeScript project for each principle.
+
+S/ (Single Responsibility)
+
+O/ (Open/Closed)
+
+L/ (Liskov Substitution)
+
+I/ (Interface Segregation)
+
+D/ (Dependency Inversion)
+
+## Getting Started
+To run the TypeScript project and see the principles in action, follow these steps:
+
+1. Navigate to the js-ts directory in your terminal.
+
+```cd demo-solid/js-ts```
+
+2. Install the necessary dependencies. This project uses pnpm.
+
+```pnpm install```
+
+3. Run the main script, which will execute the Program.ts files for each principle and print the results to the console.
+
+```pnpm start```
+
+## SOLID Principles Explained
+This section provides a recapitulation of each principle as demonstrated in this project.
+
+### S - Single Responsibility Principle
+The Single Responsibility Principle states that a class should have only one reason to change.
+
+Before: The Cable class is a monolith that violates this principle. It is responsible for multiple tasks: calculating the section, persisting data (saving and deleting), and generating reports. Any change to these responsibilities would require modifying the single Cable class.
+
+After: The code is refactored by splitting these responsibilities into dedicated classes. CableCalculator handles the calculation, CableRepository manages data persistence, and ReportGenerator creates reports. Each class now has a single, well-defined purpose.
+
+### O - Open/Closed Principle
+The Open/Closed Principle states that software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
+
+Before: The ElectricalProtection class contains a series of switch statements to perform calculations and checks based on the ProtectionType enum. This makes the class fragile. If a new protection type is added, you would have to open and modify the class, violating the principle.
+
+After: The problem is solved using the Strategy pattern. The ElectricalProtection class now depends on an abstraction (IProtectionStrategy). New protection types can be added as new classes (e.g., BreakerHVStrategy) without ever changing the core ElectricalProtection logic.
+
+### L - Liskov Substitution Principle
+The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program.
+
+Before: The StandardProcessor class defines a ProcessCode method that relies on its AddIdentifier method to add a character to a string. The SimpleProcessor subclass overrides AddIdentifier to do nothing, which breaks the program's intended behavior when substituted for the parent class.
+
+After: The refactored code fixes this by ensuring that both the StandardProcessor and SimpleProcessor correctly implement the same base contract from an abstract CodeProcessor class. This guarantees that they can be used interchangeably without causing runtime errors.
+
+### I - Interface Segregation Principle
+The Interface Segregation Principle states that no client should be forced to depend on methods it does not use.
+
+Before: The IElectricalDevice interface is a "fat" interface that contains three methods. While a Battery can implement all of them, a SolarPanel cannot store or consume energy. Forcing it to implement these unnecessary methods is a violation of the principle.
+
+After: The code is refactored by segregating the large interface into smaller, more specific ones (IEnergySource, IEnergyConsumer, IEnergyStorage). A SolarPanel can now implement only the IEnergySource interface it needs, leading to a cleaner design.
+
+### D - Dependency Inversion Principle
+The Dependency Inversion Principle states that high-level modules should not depend on low-level modules; both should depend on abstractions.
+
+Before: The high-level Program class is tightly coupled to the low-level ApiDbContext class. This makes the Program class difficult to change or test independently.
+
+After: The refactored code introduces an abstraction: the IDeviceRepository interface. The Program class now depends on this interface, and concrete implementations (EfDeviceRepository, DapperDeviceRepo) also depend on it. This allows you to swap out the low-level implementation without changing the high-level module.
+
+## SOLID and Other Software Concepts
+The SOLID principles are the foundation for many common design patterns and are crucial for writing testable code. By adhering to these principles, we create code that is modular, flexible, and easy to unit test. For example, the Open/Closed Principle naturally leads to the Strategy Pattern, and the Dependency Inversion Principle is the basis for Dependency Injection frameworks, which are essential for Test-Driven Development (TDD). Mentioning this connection shows a broader understanding of how these principles influence architectural decisions and lead to more robust software.
