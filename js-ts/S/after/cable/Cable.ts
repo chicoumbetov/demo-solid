@@ -38,7 +38,7 @@ class CableCalculator {
 // 3. CableRepository (Persistence logic)
 // This class is responsible for handling persistence (saving and deleting).
 class CableRepository {
-    private readonly _saves: Cable[] = [];
+    private _saves: Cable[] = [];
 
     public save(cable: Cable): void {
         cable.id = this._saves.length > 0 ? Math.max(...this._saves.map(x => x.id)) + 1 : 1;
