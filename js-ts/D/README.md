@@ -1,0 +1,3 @@
+In your "before" C# code, the Program class (a high-level module) is directly coupled to the ApiDbContext (a low-level module). This tight coupling makes the Program difficult to test or change. For example, if you wanted to switch from Entity Framework to Dapper, you would have to modify the Program class. This is a clear violation of DIP.
+
+Your "after" code solves this problem by inverting the dependency. You've introduced an abstraction, the IDeviceRepository interface. Now, your high-level Program class depends on this interface, not on a specific implementation. The low-level implementations (EfDeviceRepository and DapperDeviceRepo) also depend on this same interface. This allows you to easily swap out implementations without changing your main application logic.
