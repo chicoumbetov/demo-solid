@@ -48,22 +48,65 @@ Refactoring Effort: Fixing a violation of a SOLID principle can be a significant
 └── csharp
     ├── D
     │   ├── After
+    │   │   ├── ApiDbContext.cs
+    │   │   ├── After.csproj
+    │   │   ├── DapperDeviceRepo.cs
+    │   │   ├── Device.cs
+    │   │   ├── EfDeviceRepository.cs
+    │   │   ├── IDeviceRepository.cs
+    │   │   ├── Program.cs
+    │   │   └── Properties
     │   └── Before
+    │       ├── ApiDbContext.cs
+    │       ├── Before.csproj
+    │       ├── Device.cs
+    │       │   └── Properties
+    │       └── Program.cs
     ├── DemoSolid.sln
     ├── I
     │   ├── After
+    │   │   ├── After.csproj
+    │   │   ├── Program.cs
+    │   │   └── SolarPanel.cs
     │   └── Before
+    │       ├── Before.csproj
+    │       ├── Program.cs
+    │       └── SolarPanel.cs
     ├── L
     │   ├── After
+    │   │   ├── After.csproj
+    │   │   ├── CodeProcessor.cs
+    │   │   └── Program.cs
     │   └── Before
+    │       ├── Before.csproj
+    │       ├── CodeProcessor.cs
+    │       └── Program.cs
     ├── O
     │   ├── After
+    │   │   ├── After.csproj
+    │   │   ├── ElectricalProtection.cs
+    │   │   ├── Program.cs
+    │   │   └── Strategy
+    │   │       ├── BreakerDCStrategy.cs
+    │   │       ├── BreakerHVStrategy.cs
+    │   │       ├── BreakerStrategy.cs
+    │   │       ├── FuseDCStrategy.cs
+    │   │       ├── FuseStrategy.cs
+    │   │       └── IProtectionStrategy.cs
     │   └── Before
-    │       └── Strategy
+    │       ├── Before.csproj
+    │       ├── ElectricalProtection.cs
+    │       └── Program.cs
     ├── PresentationSOLID.pptx
     └── S
         ├── After
+        │   ├── After.csproj
+        │   ├── Cable.cs
+        │   └── Program.cs
         └── Before
+            ├── Before.csproj
+            ├── Cable.cs
+            └── Program.cs
 ```
 
 ### TypeScript/JavaScript Project Structure
